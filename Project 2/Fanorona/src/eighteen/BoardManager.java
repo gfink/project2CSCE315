@@ -3,46 +3,45 @@ package eighteen;
 public class BoardManager {
 	private Pieces[][] board;
 	
+	public static final int ROWS = 5;
+	public static final int COLUMNS = 9;
+	
 	public BoardManager() {
 		resetBoard();
 	}
-	
+	hghg
 	private void resetBoard() {
-		board = new Pieces[5][9];
-		for(int i = 0; i < 9; i++) {
-			board[0][i] = Pieces.BLACK;
-			board[1][i] = Pieces.BLACK;
-			board[3][i] = Pieces.WHITE;
-			board[4][i] = Pieces.WHITE;
+		board = new Pieces[ROWS][COLUMNS];
+		for(int i = 0; i < ROWS; i++) {
+			for(int j = 0; j < COLUMNS) {
+				if(i < ROWS/2) {
+					board[i][j] = Pieces.BLACK;
+				}
+				else {
+					board[i][j] = Pieces.WHITE;
+				}
+			}
 		}
-		board[2][0] = Pieces.BLACK;
-		board[2][1] = Pieces.WHITE;
-		board[2][2] = Pieces.BLACK;
-		board[2][3] = Pieces.WHITE;
-		board[2][5] = Pieces.BLACK;
-		board[2][6] = Pieces.WHITE;
-		board[2][7] = Pieces.BLACK;
-		board[2][8] = Pieces.WHITE;
+		board[ROWS/2][0] = Pieces.BLACK;
+		board[ROWS/2][1] = Pieces.WHITE;
+		board[ROWS/2][2] = Pieces.BLACK;
+		board[ROWS/2][3] = Pieces.WHITE;
+		board[ROWS/2][5] = Pieces.BLACK;
+		board[ROWS/2][6] = Pieces.WHITE;
+		board[ROWS/2][7] = Pieces.BLACK;
+		board[ROWS/2][8] = Pieces.WHITE;
 	}
 	
-	public void move(int rowStart, int columnStart, int rowEnd, int columnEnd) {
-	}
-	
-	public boolean isValidSpace(int row, int column) {
-		if(row < 5 && row >= 0 && column < 9 && column >= 0)
-			return true;
-		return false;
+	public void move(Point start, Point end) {
 	}
 	
 	private boolean isValidMove(int rowStart, int columnStart, int rowEnd, int columnEnd) {
 		if(isValidSpace(rowStart, columnStart) && isValidSpace(rowEnd, columnEnd) && ((rowStart != rowEnd) && (columnStart != columnEnd)))
 		{
-			if(rowStart + columnStart % 2 == 0)
-			{
+			if(rowStart + columnStart % 2 == 0) {
 				if(rowStart)
 			}
-			else
-			{
+			else {
 				
 			}
 		}
