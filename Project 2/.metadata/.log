@@ -1,0 +1,538 @@
+
+!ENTRY org.eclipse.osgi 4 0 2013-03-06 15:47:09.595
+!MESSAGE An error occurred while automatically activating bundle org.eclipse.equinox.p2.ui.sdk.scheduler (124).
+!STACK 0
+org.osgi.framework.BundleException: Exception in org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start() of bundle org.eclipse.equinox.p2.ui.sdk.scheduler.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:273)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:269)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.getExecutableExtension(EarlyStartupRunnable.java:117)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2402)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.lang.IllegalStateException: Could not create profile data area \\filer\williat1\ms_windows\cpsc_redirected\.eclipse\org.eclipse.platform_4.2.0_920333535\p2\org.eclipse.equinox.p2.engine\profileRegistry\SDKProfile.profile\.datafor: SDKProfile
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileDataDirectory(SimpleProfileRegistry.java:853)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.getProfileLocation(ProfilePreferences.java:218)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.load(ProfilePreferences.java:258)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:410)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.equinox.p2.engine.ProfileScope.getNode(ProfileScope.java:77)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.PreferenceInitializer.migratePreferences(PreferenceInitializer.java:40)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start(AutomaticUpdatePlugin.java:91)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 29 more
+Root exception:
+java.lang.IllegalStateException: Could not create profile data area \\filer\williat1\ms_windows\cpsc_redirected\.eclipse\org.eclipse.platform_4.2.0_920333535\p2\org.eclipse.equinox.p2.engine\profileRegistry\SDKProfile.profile\.datafor: SDKProfile
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileDataDirectory(SimpleProfileRegistry.java:853)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.getProfileLocation(ProfilePreferences.java:218)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.load(ProfilePreferences.java:258)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:410)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.equinox.p2.engine.ProfileScope.getNode(ProfileScope.java:77)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.PreferenceInitializer.migratePreferences(PreferenceInitializer.java:40)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start(AutomaticUpdatePlugin.java:91)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:273)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:269)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.getExecutableExtension(EarlyStartupRunnable.java:117)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2402)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2013-03-06 15:47:09.637
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Plug-in org.eclipse.equinox.p2.ui.sdk.scheduler was unable to load class org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdateScheduler.
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.throwException(RegistryStrategyOSGI.java:194)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:176)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:273)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:269)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.getExecutableExtension(EarlyStartupRunnable.java:117)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2402)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter$TerminatingClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.equinox.p2.ui.sdk.scheduler (124).
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	... 11 more
+Caused by: org.osgi.framework.BundleException: Exception in org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start() of bundle org.eclipse.equinox.p2.ui.sdk.scheduler.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	... 23 more
+Caused by: java.lang.IllegalStateException: Could not create profile data area \\filer\williat1\ms_windows\cpsc_redirected\.eclipse\org.eclipse.platform_4.2.0_920333535\p2\org.eclipse.equinox.p2.engine\profileRegistry\SDKProfile.profile\.datafor: SDKProfile
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileDataDirectory(SimpleProfileRegistry.java:853)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.getProfileLocation(ProfilePreferences.java:218)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.load(ProfilePreferences.java:258)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:410)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.equinox.p2.engine.ProfileScope.getNode(ProfileScope.java:77)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.PreferenceInitializer.migratePreferences(PreferenceInitializer.java:40)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start(AutomaticUpdatePlugin.java:91)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 29 more
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2013-03-06 15:47:09.638
+!MESSAGE Plug-in org.eclipse.equinox.p2.ui.sdk.scheduler was unable to load class org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdateScheduler.
+!STACK 0
+org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter$TerminatingClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.equinox.p2.ui.sdk.scheduler (124).
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:273)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:269)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.getExecutableExtension(EarlyStartupRunnable.java:117)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2402)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.osgi.framework.BundleException: Exception in org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start() of bundle org.eclipse.equinox.p2.ui.sdk.scheduler.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	... 23 more
+Caused by: java.lang.IllegalStateException: Could not create profile data area \\filer\williat1\ms_windows\cpsc_redirected\.eclipse\org.eclipse.platform_4.2.0_920333535\p2\org.eclipse.equinox.p2.engine\profileRegistry\SDKProfile.profile\.datafor: SDKProfile
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileDataDirectory(SimpleProfileRegistry.java:853)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.getProfileLocation(ProfilePreferences.java:218)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.load(ProfilePreferences.java:258)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:410)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.equinox.p2.engine.ProfileScope.getNode(ProfileScope.java:77)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.PreferenceInitializer.migratePreferences(PreferenceInitializer.java:40)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start(AutomaticUpdatePlugin.java:91)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 29 more
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2013-03-06 15:47:09.639
+!MESSAGE Plug-in org.eclipse.equinox.p2.ui.sdk.scheduler was unable to load class org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdateScheduler.
+!STACK 0
+org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter$TerminatingClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.equinox.p2.ui.sdk.scheduler (124).
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:273)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:269)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.getExecutableExtension(EarlyStartupRunnable.java:117)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2402)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.osgi.framework.BundleException: Exception in org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start() of bundle org.eclipse.equinox.p2.ui.sdk.scheduler.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	... 23 more
+Caused by: java.lang.IllegalStateException: Could not create profile data area \\filer\williat1\ms_windows\cpsc_redirected\.eclipse\org.eclipse.platform_4.2.0_920333535\p2\org.eclipse.equinox.p2.engine\profileRegistry\SDKProfile.profile\.datafor: SDKProfile
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileDataDirectory(SimpleProfileRegistry.java:853)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.getProfileLocation(ProfilePreferences.java:218)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.load(ProfilePreferences.java:258)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:410)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.equinox.p2.engine.ProfileScope.getNode(ProfileScope.java:77)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.PreferenceInitializer.migratePreferences(PreferenceInitializer.java:40)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start(AutomaticUpdatePlugin.java:91)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 29 more
+
+!ENTRY org.eclipse.ui 4 4 2013-03-06 15:47:09.650
+!MESSAGE Unhandled Exception
+
+!ENTRY org.eclipse.equinox.p2.ui.sdk.scheduler 4 0 2013-03-06 15:47:09.656
+!MESSAGE Unable to execute early startup code for an extension
+!STACK 1
+org.eclipse.core.runtime.CoreException: Plug-in org.eclipse.equinox.p2.ui.sdk.scheduler was unable to load class org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdateScheduler.
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.throwException(RegistryStrategyOSGI.java:194)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:176)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:273)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:269)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.getExecutableExtension(EarlyStartupRunnable.java:117)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2402)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter$TerminatingClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.equinox.p2.ui.sdk.scheduler (124).
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	... 11 more
+Caused by: org.osgi.framework.BundleException: Exception in org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start() of bundle org.eclipse.equinox.p2.ui.sdk.scheduler.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	... 23 more
+Caused by: java.lang.IllegalStateException: Could not create profile data area \\filer\williat1\ms_windows\cpsc_redirected\.eclipse\org.eclipse.platform_4.2.0_920333535\p2\org.eclipse.equinox.p2.engine\profileRegistry\SDKProfile.profile\.datafor: SDKProfile
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileDataDirectory(SimpleProfileRegistry.java:853)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.getProfileLocation(ProfilePreferences.java:218)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.load(ProfilePreferences.java:258)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:410)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.equinox.p2.engine.ProfileScope.getNode(ProfileScope.java:77)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.PreferenceInitializer.migratePreferences(PreferenceInitializer.java:40)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start(AutomaticUpdatePlugin.java:91)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 29 more
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2013-03-06 15:47:09.656
+!MESSAGE Plug-in org.eclipse.equinox.p2.ui.sdk.scheduler was unable to load class org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdateScheduler.
+!STACK 0
+org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter$TerminatingClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.equinox.p2.ui.sdk.scheduler (124).
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:464)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:273)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:269)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.getExecutableExtension(EarlyStartupRunnable.java:117)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2402)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.osgi.framework.BundleException: Exception in org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start() of bundle org.eclipse.equinox.p2.ui.sdk.scheduler.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	... 23 more
+Caused by: java.lang.IllegalStateException: Could not create profile data area \\filer\williat1\ms_windows\cpsc_redirected\.eclipse\org.eclipse.platform_4.2.0_920333535\p2\org.eclipse.equinox.p2.engine\profileRegistry\SDKProfile.profile\.datafor: SDKProfile
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfileDataDirectory(SimpleProfileRegistry.java:853)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.getProfileLocation(ProfilePreferences.java:218)
+	at org.eclipse.equinox.internal.p2.engine.ProfilePreferences.load(ProfilePreferences.java:258)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:410)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.equinox.p2.engine.ProfileScope.getNode(ProfileScope.java:77)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.PreferenceInitializer.migratePreferences(PreferenceInitializer.java:40)
+	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdatePlugin.start(AutomaticUpdatePlugin.java:91)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 29 more
+!SESSION 2013-03-06 15:48:34.218 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_13
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.osgi 4 0 2013-03-06 15:49:11.537
+!MESSAGE 
+!STACK 0
+java.io.IOException: Unable to create lock manager.
+	at org.eclipse.osgi.storagemanager.StorageManager.add(StorageManager.java:221)
+	at org.eclipse.osgi.storagemanager.StorageManager.closeOutputStream(StorageManager.java:902)
+	at org.eclipse.osgi.storagemanager.ManagedOutputStream.close(ManagedOutputStream.java:52)
+	at java.io.FilterOutputStream.close(Unknown Source)
+	at java.io.FilterOutputStream.close(Unknown Source)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.saveBundleDatas(BaseStorage.java:598)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.saveAllData(BaseStorage.java:461)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage$StateSaver.run(BaseStorage.java:1306)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.osgi 4 0 2013-03-06 15:49:16.911
+!MESSAGE 
+!STACK 0
+java.io.IOException: Unable to create lock manager.
+	at org.eclipse.osgi.storagemanager.StorageManager.add(StorageManager.java:221)
+	at org.eclipse.osgi.storagemanager.StorageManager.add(StorageManager.java:205)
+	at org.eclipse.osgi.storagemanager.StorageManager.lookup(StorageManager.java:430)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.saveStateData(BaseStorage.java:668)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.saveAllData(BaseStorage.java:462)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage$StateSaver.run(BaseStorage.java:1306)
+	at java.lang.Thread.run(Unknown Source)
+!SESSION 2013-03-06 16:23:12.279 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_13
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.osgi 4 0 2013-03-06 16:24:01.180
+!MESSAGE 
+!STACK 0
+java.io.IOException: Unable to create lock manager.
+	at org.eclipse.osgi.storagemanager.StorageManager.add(StorageManager.java:221)
+	at org.eclipse.osgi.storagemanager.StorageManager.closeOutputStream(StorageManager.java:902)
+	at org.eclipse.osgi.storagemanager.ManagedOutputStream.close(ManagedOutputStream.java:52)
+	at java.io.FilterOutputStream.close(Unknown Source)
+	at java.io.FilterOutputStream.close(Unknown Source)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.saveBundleDatas(BaseStorage.java:598)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.saveAllData(BaseStorage.java:461)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage$StateSaver.run(BaseStorage.java:1306)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.osgi 4 0 2013-03-06 16:24:06.484
+!MESSAGE 
+!STACK 0
+java.io.IOException: Unable to create lock manager.
+	at org.eclipse.osgi.storagemanager.StorageManager.add(StorageManager.java:221)
+	at org.eclipse.osgi.storagemanager.StorageManager.add(StorageManager.java:205)
+	at org.eclipse.osgi.storagemanager.StorageManager.lookup(StorageManager.java:430)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.saveStateData(BaseStorage.java:668)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.saveAllData(BaseStorage.java:462)
+	at org.eclipse.osgi.internal.baseadaptor.BaseStorage$StateSaver.run(BaseStorage.java:1306)
+	at java.lang.Thread.run(Unknown Source)
+!SESSION 2013-03-06 16:24:55.037 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_13
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -data \\filer\williat1\315\Project 2 -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 4 4 2013-03-06 16:25:34.903
+!MESSAGE Unable to create part
+
+!ENTRY org.eclipse.jdt.ui 4 996 2013-03-06 16:25:34.914
+!MESSAGE The Class File Viewer cannot handle the given input ('org.eclipse.ui.ide.FileStoreEditorInput').
+!STACK 1
+org.eclipse.core.runtime.CoreException: The Class File Viewer cannot handle the given input ('org.eclipse.ui.ide.FileStoreEditorInput').
+	at org.eclipse.jdt.internal.ui.javaeditor.ClassFileEditor.doSetInput(ClassFileEditor.java:656)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$19.run(AbstractTextEditor.java:3209)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:464)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:372)
+	at org.eclipse.ui.internal.WorkbenchWindow$13.run(WorkbenchWindow.java:1675)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:1672)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3227)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.init(AbstractTextEditor.java:3254)
+	at org.eclipse.ui.internal.EditorReference.initialize(EditorReference.java:324)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:288)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:859)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:839)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.inject(InjectorImpl.java:111)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:319)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:240)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:161)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:102)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:71)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:53)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:141)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:896)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:630)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:732)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:703)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:697)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:682)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl$1.handleEvent(PartServiceImpl.java:91)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler$1.run(UIEventHandler.java:41)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:180)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:150)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4687)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application$1.syncExec(E4Application.java:187)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:38)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:197)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:197)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:135)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:78)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:39)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:81)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:58)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:374)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElement(ElementContainerImpl.java:171)
+	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.showElementInWindow(ModelServiceImpl.java:418)
+	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.bringToTop(ModelServiceImpl.java:385)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.delegateBringToTop(PartServiceImpl.java:579)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.bringToTop(PartServiceImpl.java:315)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.showPart(PartServiceImpl.java:985)
+	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditor(WorkbenchPage.java:3079)
+	at org.eclipse.ui.internal.WorkbenchPage.access$22(WorkbenchPage.java:3003)
+	at org.eclipse.ui.internal.WorkbenchPage$8.run(WorkbenchPage.java:2985)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:2981)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:2940)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:2923)
+	at org.eclipse.ui.ide.IDE.openEditorOnFileStore(IDE.java:1253)
+	at org.eclipse.ui.internal.ide.actions.OpenLocalFileAction.run(OpenLocalFileAction.java:107)
+	at org.eclipse.ui.internal.ide.actions.OpenLocalFileAction.run(OpenLocalFileAction.java:76)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:251)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:229)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4169)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3758)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1029)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:923)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:588)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:543)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+!SUBENTRY 1 org.eclipse.jdt.ui 4 996 2013-03-06 16:25:34.915
+!MESSAGE The Class File Viewer cannot handle the given input ('org.eclipse.ui.ide.FileStoreEditorInput').
