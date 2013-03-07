@@ -1,0 +1,29 @@
+package eighteen;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
+public class FanoronaGUI extends JFrame{
+
+	private static final long serialVersionUID = 1L;
+
+	public FanoronaGUI() 
+	{
+		initGUI();
+	}
+	public final void initGUI()
+	{
+		setTitle("Fanorona Game Team 18");
+		setSize(600,600);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	public static void main (String[] args){
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+					FanoronaGUI fgui = new FanoronaGUI();
+					fgui.setVisible(true);
+				}
+			}
+		);
+	}
+}
