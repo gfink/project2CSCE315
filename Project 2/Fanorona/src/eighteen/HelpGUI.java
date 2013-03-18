@@ -1,21 +1,25 @@
 package eighteen;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import java.awt.*;
+import javax.swing.*;
 public class HelpGUI extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
 	public HelpGUI() 
 	{
+		
+		String helpTextString = 
+				"This is where the help information will go " +
+				"once we decide what that is.";
+		JLabel helpText = new JLabel(helpTextString);
+		this.add(helpText,BorderLayout.NORTH);
 		setTitle("Help");
-		setSize(200,200);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		//Right now width needs to be hard coded
+		//don't know how to get text to wrap, will need
+		//to hardcode line breaks in prompt also
+		setSize(800,200);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 }

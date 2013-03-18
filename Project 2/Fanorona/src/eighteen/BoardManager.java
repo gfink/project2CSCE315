@@ -7,7 +7,7 @@ public class BoardManager {
 		}
 	}
 	
-	private Pieces[][] board;
+	Pieces[][] board;
 	
 	private int moves;
 	private int whites;
