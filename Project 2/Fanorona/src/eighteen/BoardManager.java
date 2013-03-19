@@ -35,6 +35,7 @@ public class BoardManager {
 		board[ROWS/2][1] = Pieces.WHITE;
 		board[ROWS/2][2] = Pieces.BLACK;
 		board[ROWS/2][3] = Pieces.WHITE;
+		board[ROWS/2][4] = Pieces.EMPTY;
 		board[ROWS/2][5] = Pieces.BLACK;
 		board[ROWS/2][6] = Pieces.WHITE;
 		board[ROWS/2][7] = Pieces.BLACK;
