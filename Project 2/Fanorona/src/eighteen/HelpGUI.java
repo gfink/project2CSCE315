@@ -1,7 +1,9 @@
 package eighteen;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 public class HelpGUI extends JFrame{
 
 	private static final long serialVersionUID = 1L;
