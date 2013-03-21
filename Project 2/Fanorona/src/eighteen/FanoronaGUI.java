@@ -1,9 +1,8 @@
 package eighteen;
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.ActionEvent;
 
 public class FanoronaGUI extends JFrame {
 
@@ -11,18 +10,17 @@ public class FanoronaGUI extends JFrame {
 	//should some of these be containers?
 	JPanel game;
 	JPanel board;
-	JButton helpb;
+	JButton helpb; //TODO add to a tool bar
 	BoardManager boardMan;
-	JButton[][] gamePieces;
+	DrawnPiece[][] gamePieces;
 	GridLayout boardLayout;
     public FanoronaGUI() {
     	setSize(1000,700);
         setTitle("Fanorona");
-        //setLayout(null);
         //may need to move when replaying game
         boardMan = new BoardManager();
-        gamePieces = new JButton[BoardManager.ROWS][BoardManager.COLUMNS];
-        boardLayout = new GridLayout(BoardManager.ROWS,BoardManager.COLUMNS);
+        gamePieces = new DrawnPiece[BoardManager.ROWS][BoardManager.COLUMNS];
+        boardLayout = new GridLayout(BoardManager.ROWS,BoardManager.COLUMNS,10,10);
         game = new JPanel();
         game.setPreferredSize(new Dimension(800, 600));
         board  = new JPanel(boardLayout);
@@ -46,33 +44,26 @@ public class FanoronaGUI extends JFrame {
         {
         	for(int y = 0; y<boardMan.COLUMNS; y++)
         	{
-        		JButton pieceB;
+        		DrawnPiece pieceDrawn;
         		if(boardMan.board[x][y] == Pieces.BLACK)
         		{
-        			pieceB = new JButton("BLACK");
-        			//pieceB.setSize(20,20);
-        			gamePieces[x][y] = pieceB;
-        			pieceB.setLayout(null);
-        			board.add(pieceB);
-        			//pieceB.setLocation(x*21,y*21);
+        			pieceDrawn = new DrawnPiece(x*50,y*50,Pieces.BLACK);
+        			gamePieces[x][y] = pieceDrawn;
+        			board.add(pieceDrawn);
         		}
         		else if(boardMan.board[x][y] == Pieces.WHITE)
         		{
-        			pieceB = new JButton("WHITE");
-        			//pieceB.setSize(20,20);
-        			gamePieces[x][y] = pieceB;
-        			pieceB.setLayout(null);
-        			board.add(pieceB);
-        			//pieceB.setLocation(x*21,y*21);
+        			pieceDrawn = new DrawnPiece(x*50,y*50,Pieces.WHITE);
+        			pieceDrawn.setPreferredSize(new Dimension(30,30));
+        			gamePieces[x][y] = pieceDrawn;
+        			board.add(pieceDrawn);
         		}
         		else
         		{
-        			pieceB = new JButton("Empty");
-        			//pieceB.setSize(20,20);
-        			gamePieces[x][y] = pieceB;
-        			pieceB.setLayout(null);
-        			board.add(pieceB);
-        			//pieceB.setLocation(x*21,y*21);
+        			pieceDrawn = new DrawnPiece(x*50,y*50,Pieces.EMPTY);
+        			pieceDrawn.setPreferredSize(new Dimension(30,30));
+        			gamePieces[x][y] = pieceDrawn;
+        			board.add(pieceDrawn);
         		}
         	}
         }
