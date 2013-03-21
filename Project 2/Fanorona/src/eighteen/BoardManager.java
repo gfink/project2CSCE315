@@ -9,6 +9,8 @@ public class BoardManager {
 	
 	Pieces[][] board;
 	
+	Pieces turn;
+	
 	private int moves;
 	private int whites;
 	private int blacks;
@@ -43,6 +45,7 @@ public class BoardManager {
 		moves = 0;
 		whites = 22;
 		blacks = 22;
+		turn = Pieces.WHITE;
 	}
 	
 	//Returns whether the game is over
@@ -54,6 +57,12 @@ public class BoardManager {
 		board[start.row][start.column] = Pieces.EMPTY;
 		
 		moves++;
+		if(turn == Pieces.WHITE) {
+			turn = Pieces.BLACK;
+		}
+		else {
+			turn = Pieces.WHITE;
+		}
 		if(moves >= 50 || whites == 0 || blacks == 0) {
 			return true;
 		}
