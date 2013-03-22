@@ -59,7 +59,7 @@ public class BoardManager {
 		if(board.get(mov.getEnd()) != Pieces.EMPTY) {
 			return false;
 		}
-		if(Points.isValidSpace(mov.getStart()) && Points.isValidSpace(mov.getEnd()) && !mov.getStart().equals(mov.getEnd())) {
+		if(Points.isValidSpace(mov.getStart().row, mov.getStart().column) && Points.isValidSpace(mov.getEnd().row, mov.getEnd().column) && !mov.getStart().equals(mov.getEnd())) {
 			//Checks for Diagonal moves
 			if(mov.getStart().adjacentLocations.contains(mov.getEnd())) {
 				return true;

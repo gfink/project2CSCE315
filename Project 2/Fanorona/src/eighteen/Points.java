@@ -21,30 +21,30 @@ public class Points {
 		return false;
 	}
 	
-	public static boolean isValidSpace(Points s) {
-		if(s.row < BoardManager.ROWS && s.row >= 0 && s.column < BoardManager.COLUMNS && s.column >= 0)
+	public static boolean isValidSpace(int s_row, int s_column) {
+		if(s_row < BoardManager.ROWS && s_row >= 0 && s_column < BoardManager.COLUMNS && s_column >= 0)
 			return true;
 		return false;
 	}
 	
 	private void makeAdjacentLocations() {
 		if(row + column % 2 == 0) {
-			if(isValidSpace(new Points(row - 1, column - 1)))
+			if(isValidSpace(row - 1, column - 1))
 				adjacentLocations.add(new Points(row - 1, column - 1));
-			if(isValidSpace(new Points(row - 1, column + 1)))
+			if(isValidSpace(row - 1, column + 1))
 				adjacentLocations.add(new Points(row - 1, column + 1));
-			if(isValidSpace(new Points(row + 1, column - 1)))
+			if(isValidSpace(row + 1, column - 1))
 				adjacentLocations.add(new Points(row + 1, column - 1));
-			if(isValidSpace(new Points(row + 1, column + 1)))
+			if(isValidSpace(row + 1, column + 1))
 				adjacentLocations.add(new Points(row + 1, column + 1));
 		}
-		if(isValidSpace(new Points(row - 1, column)))
+		if(isValidSpace(row - 1, column))
 			adjacentLocations.add(new Points(row - 1, column));
-		if(isValidSpace(new Points(row + 1, column)))
+		if(isValidSpace(row + 1, column))
 			adjacentLocations.add(new Points(row + 1, column));
-		if(isValidSpace(new Points(row, column - 1)))
+		if(isValidSpace(row, column - 1))
 			adjacentLocations.add(new Points(row, column - 1));
-		if(isValidSpace(new Points(row, column + 1)))
+		if(isValidSpace(row, column + 1))
 			adjacentLocations.add(new Points(row, column + 1));
 	}
 	
