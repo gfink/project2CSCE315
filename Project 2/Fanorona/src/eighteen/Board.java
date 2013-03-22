@@ -36,7 +36,10 @@ public class Board {
 	{
 		return theBoard[a.row][a.column];
 	}
-	
+	public Pieces get(int x, int y)
+	{
+		return theBoard[x][y];
+	}
 	public void set(Points a, Pieces color)
 	{
 		theBoard[a.row][a.column] = color;

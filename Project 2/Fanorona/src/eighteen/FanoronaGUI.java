@@ -49,13 +49,13 @@ public class FanoronaGUI extends JFrame {
         	for(int y = 0; y<boardMan.COLUMNS; y++)
         	{
         		DrawnPiece pieceDrawn;
-        		if(boardMan.board[x][y] == Pieces.BLACK)
+        		if(boardMan.board.get(x,y) == Pieces.BLACK)
         		{
         			pieceDrawn = new DrawnPiece(x*50,y*50,Pieces.BLACK);
         			gamePieces[x][y] = pieceDrawn;
         			board.add(pieceDrawn);
         		}
-        		else if(boardMan.board[x][y] == Pieces.WHITE)
+        		else if(boardMan.board.get(x,y) == Pieces.WHITE)
         		{
         			pieceDrawn = new DrawnPiece(x*50,y*50,Pieces.WHITE);
         			pieceDrawn.setPreferredSize(new Dimension(30,30));
@@ -80,9 +80,9 @@ public class FanoronaGUI extends JFrame {
         setVisible(true);
     }
 
-
+    public static FanoronaGUI GUI;
     public static void main(String[] args) {
-        new FanoronaGUI();
+       GUI =  new FanoronaGUI();
     }
     
 }
