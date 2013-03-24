@@ -32,6 +32,12 @@ public class Board {
 		blacks = 22;
 	}
 	
+	public Board(Board b) {
+		theBoard = b.theBoard;
+		blacks = b.blacks;
+		whites = b.whites;
+	}
+
 	public Pieces get(Points a)
 	{
 		return theBoard[a.row][a.column];

@@ -1,7 +1,7 @@
 package eighteen;
 
 public class BoardManager {
-	public class BadMoveException extends Exception {
+	public static class BadMoveException extends Exception {
 		/**
 		 * 
 		 */
@@ -54,9 +54,35 @@ public class BoardManager {
 		return false;
 	}
 	
+	public static Board move(Board b, Move mov) throws BadMoveException {
+		if(!isValidMove(b, mov))
+			throw new BoardManager.BadMoveException("Bad move at [" + mov.getStart().row + ", " + mov.getStart().column + "] to [" + mov.getEnd().row + ", " + mov.getEnd().column + "]");
+		
+		Board ret = new Board(b);
+		
+		ret.set(mov.getEnd(), ret.get(mov.getStart()));
+		ret.set(mov.getStart(), Pieces.EMPTY);
+		
+		return ret;
+	}
+	
 	private boolean isValidMove(Move mov) {
 		//Space is taken
 		if(board.get(mov.getEnd()) != Pieces.EMPTY) {
+			return false;
+		}
+		if(Points.isValidSpace(mov.getStart().row, mov.getStart().column) && Points.isValidSpace(mov.getEnd().row, mov.getEnd().column) && !mov.getStart().equals(mov.getEnd())) {
+			//Checks for Diagonal moves
+			if(mov.getStart().adjacentLocations.contains(mov.getEnd())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean isValidMove(Board b, Move mov) {
+		//Space is taken
+		if(b.get(mov.getEnd()) != Pieces.EMPTY) {
 			return false;
 		}
 		if(Points.isValidSpace(mov.getStart().row, mov.getStart().column) && Points.isValidSpace(mov.getEnd().row, mov.getEnd().column) && !mov.getStart().equals(mov.getEnd())) {
