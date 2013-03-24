@@ -15,6 +15,12 @@ public class Points {
 		makeAdjacentLocations();
 	}
 	
+	public Points(Points a) {
+		this.row = a.row;
+		this.column = a.column;
+		makeAdjacentLocations();
+	}
+	
 	public boolean isValidSpace() {
 		if(row < BoardManager.ROWS && row >= 0 && column < BoardManager.COLUMNS && column >= 0)
 			return true;
