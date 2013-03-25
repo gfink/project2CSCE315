@@ -2,14 +2,19 @@ package eighteen;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Ellipse2D;
+
 import javax.swing.*;
-public class DrawnPiece extends JPanel implements MouseListener{
-	private int xLoc;
-	private int yLoc;
-	private Color pColor;
-	private Boolean isVisible;
-	public DrawnPiece(int x,int y,Pieces Piece)
+//using model code from here http://harryjoy.com/2011/08/21/different-button-shapes-in-swing/
+public class DrawnPiece extends JButton{
+	public int xLoc;
+	public int yLoc;
+	public Color pColor;
+	Shape shape;
+	public DrawnPiece(Pieces Piece, int x, int y)
 	{
+		
+		super();
 		xLoc = x;
 		yLoc = y;
 		if (Piece == Piece.WHITE)
@@ -24,39 +29,34 @@ public class DrawnPiece extends JPanel implements MouseListener{
 		{
 			pColor = Color.GRAY;
 		}
-		this.setPreferredSize(new Dimension(70,70));
-		addMouseListener(this);
-	}
-	protected void paintComponent(Graphics g){
-		int h = getHeight();
-		int w = getWidth();
-		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(pColor);
-		g2d.fillOval(0, 0, 70, 70);
+		Dimension size = getPreferredSize();
+		size.width = size.height = Math.max(size.width, size.height);
+		setPreferredSize(size);
+		setContentAreaFilled(false);
 		
 	}
-	public void mousePressed(MouseEvent e) {
-			System.out.println("Mouse pressed (# of clicks: "
-	                    + e.getClickCount() + ")");
-	    }
+	public void showPotentialMove()
+	{
 
-	    public void mouseReleased(MouseEvent e) {
-	    	System.out.println("Mouse released (# of clicks: "
-	                    + e.getClickCount() + ")");
-	    }
-
-	    public void mouseEntered(MouseEvent e) {
-	    	System.out.println("Mouse entered");
-	    }
-
-	    public void mouseExited(MouseEvent e) {
-	    	System.out.println("Mouse exited");
-	    }
-
-	    public void mouseClicked(MouseEvent e) {
-	    	System.out.println("Mouse clicked (# of clicks: "
-	                    + e.getClickCount() + ")");
-	    }
+	}
+	protected void paintComponent(Graphics g)
+	{
+		g.setColor(pColor);
+		g.fillOval(0,0,getSize().width-1,getSize().height-1);
+		super.paintComponent(g);
+	}
+	protected void paintBorder(Graphics g)
+	{
+		g.setColor(pColor);
+		g.drawOval(0,0,getSize().width-1,getSize().height-1);
+	}
+	public boolean contains(int x, int y)
+	{
+		if (shape==null || !shape.getBounds().equals(getBounds()))
+		{
+			shape = new Ellipse2D.Float(0,0,getWidth(),getHeight());
+		}
+		return shape.contains(x,y);
+	}
 
 }
