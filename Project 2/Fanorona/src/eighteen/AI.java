@@ -41,13 +41,20 @@ public class AI {
 				addLevel(child);
 	}
 	
-	private void alphaBetaSearch() {
+	private Move alphaBetaSearch() throws BadMoveException {
 		TreeNode root = minMaxTree.getRoot();
+		if(!root.hasChildren())
+			getNewLevel();
 		int value;
 		if (root.getMove().getColor() != myColor)
 			value = maxValue(root, -999999, 999999);
 		else
 			value = minValue(root, -999999, 999999);
+		for(TreeNode child: root.getChildren()) {
+			if(child.traversalValue == value)
+				return child.getMove();
+		}
+		return new Move();
 	}
 	
 	private int maxValue(TreeNode state, int alpha, int beta) {
