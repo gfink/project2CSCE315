@@ -24,26 +24,16 @@ public class AI {
 	
 	public void addLevel(TreeNode node) throws BadMoveException {
 		if(!node.hasChildren()) {
-			Points curLocation = new Points(0, 0);
 			Pieces color;
-			Move move = new Move();
 			if(node.getMove().getColor() == Pieces.WHITE)
 				color = Pieces.BLACK;
 			else
 				color = Pieces.WHITE;
-			for(int x=0; x < BoardManager.ROWS; x++) {
-				for(int y=0; y < BoardManager.COLUMNS; y++) {
-					curLocation.row = x;
-					curLocation.column = y;
-					if(node.board.get(curLocation) == color) {
-						List<Move> validMoves = node.board.getValidMoves(curLocation, color);
-						for(Move newMove: validMoves) {
-							Board newBoard = BoardManager.move(node.board, newMove);
-							TreeNode newChild = new TreeNode(move, newBoard);
-							node.addChild(newChild);
-						}
-					}
-				}
+			List<Move> validMoves = node.board.getValidMoves(color);
+			for(Move move: validMoves) {
+				Board newBoard = BoardManager.move(node.board, move);
+				TreeNode newChild = new TreeNode(move, newBoard);
+				node.addChild(newChild);
 			}
 		}
 		else

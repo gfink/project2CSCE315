@@ -59,275 +59,111 @@ public class Board {
 		return whites - blacks;
 	}
 	
-	public List<Move> getValidMoves(Points start, Pieces color) throws BadMoveException {
+	public List<Move> getValidMoves(Pieces color) throws BadMoveException {
 		ArrayList<Move> withAttack = new ArrayList<Move>();
 		ArrayList<Move> noAttack = new ArrayList<Move>();
-		Move move = new Move();
-		move.setStart(start);
-		move.setColor(color);
-		for(Points end: start.adjacentLocations) {
-			move.setEnd(end);
-			move.updateDirection();
-			if(BoardManager.isValidMove(this, move)) {
-				Pieces advancing;
-				Pieces retracting;
-				switch(move.getDirection()) {
-				case UP:
-					if(Points.isValidSpace(start.row - 2, start.column) && Points.isValidSpace(start.row + 1, start.column)) {
-						advancing = theBoard[start.row - 2][start.column];
-						retracting = theBoard[start.row + 1][start.column];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row - 2, start.column)) {
-						advancing = theBoard[start.row - 2][start.column];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row + 1, start.column)) {
-						retracting = theBoard[start.row + 1][start.column];
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(withAttack.isEmpty()) {
-							Move newMove = new Move(start, end, color, false, false);
-							noAttack.add(newMove);
-					}
-					break;
-				case UPRIGHT:
-					if(Points.isValidSpace(start.row - 2, start.column + 2) && Points.isValidSpace(start.row + 1, start.column - 1)) {
-						advancing = theBoard[start.row - 2][start.column + 2];
-						retracting = theBoard[start.row + 1][start.column - 1];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row - 2, start.column + 2)) {
-						advancing = theBoard[start.row - 2][start.column + 2];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row + 1, start.column - 1)) {
-						retracting = theBoard[start.row + 1][start.column - 1];
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(withAttack.isEmpty()) {
-						Move newMove = new Move(start, end, color, false, false);
-						noAttack.add(newMove);
-					}
-					break;
-				case UPLEFT:
-					if(Points.isValidSpace(start.row - 2, start.column - 2) && Points.isValidSpace(start.row + 1, start.column + 1)) {
-						advancing = theBoard[start.row - 2][start.column - 2];
-						retracting = theBoard[start.row + 1][start.column + 1];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row - 2, start.column - 2)) {
-						advancing = theBoard[start.row - 2][start.column - 2];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row + 1, start.column + 1)) {
-						retracting = theBoard[start.row + 1][start.column + 1];
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(withAttack.isEmpty()) {
-						Move newMove = new Move(start, end, color, false, false);
-						noAttack.add(newMove);
-					}
-					break;
-				case DOWN:
-					if(Points.isValidSpace(start.row + 2, start.column) && Points.isValidSpace(start.row - 1, start.column)) {
-						advancing = theBoard[start.row + 2][start.column];
-						retracting = theBoard[start.row - 1][start.column];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
+		Points curLocation = new Points(0,0);
+		
+		for(int x=0; x < BoardManager.ROWS; x++) {
+			for(int y=0; y < BoardManager.COLUMNS; y++) {
+				curLocation.row = x;
+				curLocation.column = y;
+				Move move = new Move();
+				if(get(curLocation) == color) {
+					move.setStart(curLocation);
+					move.setColor(color);
+					for(Points end: curLocation.adjacentLocations) {
+						move.setEnd(end);
+						move.updateDirection();
+						int rowAdv = 0;
+						int rowRetr = 0;
+						int colAdv = 0;
+						int colRetr = 0;
+						if(BoardManager.isValidMove(this, move)) {
+							Pieces advancing;
+							Pieces retracting;
+							switch(move.getDirection()) {
+							case UP:
+								rowAdv = -2;
+								colAdv = 0;
+								rowRetr = 1;
+								colRetr = 0;
+								break;
+							case UPRIGHT:
+								rowAdv = -2;
+								colAdv = 2;
+								rowRetr = 1;
+								colRetr = -1;
+								break;
+							case UPLEFT:
+								rowAdv = -2;
+								colAdv = -2;
+								rowRetr = 1;
+								colRetr = 1;
+								break;
+							case DOWN:
+								rowAdv = 2;
+								colAdv = 0;
+								rowRetr = -1;
+								colRetr = 0;
+								break;
+							case DOWNRIGHT:
+								rowAdv = 2;
+								colAdv = 2;
+								rowRetr = -1;
+								colRetr = -1;
+								break;
+							case DOWNLEFT:
+								rowAdv = 2;
+								colAdv = -2;
+								rowRetr = -1;
+								colRetr = 1;
+								break;
+							case LEFT:
+								rowAdv = 0;
+								colAdv = -2;
+								rowRetr = 0;
+								colRetr = 1;
+								break;
+							case RIGHT:
+								rowAdv = 0;
+								colAdv = 2;
+								rowRetr = 0;
+								colRetr = -1;
+								break;
+							}
+							if(Points.isValidSpace(curLocation.row + rowAdv, curLocation.column + colAdv) && Points.isValidSpace(curLocation.row + rowRetr, curLocation.column + colRetr)) {
+								advancing = theBoard[curLocation.row + rowAdv][curLocation.column + colAdv];
+								retracting = theBoard[curLocation.row + rowRetr][curLocation.column + colRetr];
+								if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
+									Move newMove = new Move(curLocation, end, color, true, true);
+									withAttack.add(newMove);
+								}
+								if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
+									Move newMove = new Move(curLocation, end, color, false, true);
+									withAttack.add(newMove);
+								}
+							}
+							else if(Points.isValidSpace(curLocation.row + rowAdv, curLocation.column + colAdv)) {
+								advancing = theBoard[curLocation.row + rowAdv][curLocation.column + colAdv];
+								if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
+									Move newMove = new Move(curLocation, end, color, false, true);
+									withAttack.add(newMove);
+								}
+							}
+							else if(Points.isValidSpace(curLocation.row + rowRetr, curLocation.column + colRetr)) {
+								retracting = theBoard[curLocation.row + rowRetr][curLocation.column + colRetr];
+								if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
+									Move newMove = new Move(curLocation, end, color, true, true);
+									withAttack.add(newMove);
+								}
+							}
+							else if(withAttack.isEmpty()) {
+									Move newMove = new Move(curLocation, end, color, false, false);
+									noAttack.add(newMove);
+							}
 						}
 					}
-					else if(Points.isValidSpace(start.row + 2, start.column)) {
-						advancing = theBoard[start.row + 2][start.column];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row - 1, start.column)) {
-						retracting = theBoard[start.row - 1][start.column];
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(withAttack.isEmpty()) {
-						Move newMove = new Move(start, end, color, false, false);
-						noAttack.add(newMove);
-					}
-					break;
-				case DOWNRIGHT:
-					if(Points.isValidSpace(start.row + 2, start.column + 2) && Points.isValidSpace(start.row - 1, start.column - 1)) {
-						advancing = theBoard[start.row + 2][start.column + 2];
-						retracting = theBoard[start.row - 1][start.column - 1];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row + 2, start.column + 2)) {
-						advancing = theBoard[start.row + 2][start.column + 2];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row - 1, start.column - 1)) {
-						retracting = theBoard[start.row - 1][start.column - 1];
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(withAttack.isEmpty()) {
-						Move newMove = new Move(start, end, color, false, false);
-						noAttack.add(newMove);
-					}
-					break;
-				case DOWNLEFT:
-					if(Points.isValidSpace(start.row + 2, start.column - 2) && Points.isValidSpace(start.row - 1, start.column + 1)) {
-						advancing = theBoard[start.row + 2][start.column - 2];
-						retracting = theBoard[start.row - 1][start.column + 1];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row + 2, start.column - 2)) {
-						advancing = theBoard[start.row + 2][start.column - 2];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row - 1, start.column + 1)) {
-						retracting = theBoard[start.row - 1][start.column + 1];
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(withAttack.isEmpty()) {
-						Move newMove = new Move(start, end, color, false, false);
-						noAttack.add(newMove);
-					}
-					break;
-				case LEFT:
-					if(Points.isValidSpace(start.row, start.column - 2) && Points.isValidSpace(start.row, start.column + 1)) {
-						advancing = theBoard[start.row][start.column - 2];
-						retracting = theBoard[start.row][start.column + 1];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row, start.column - 2)) {
-						advancing = theBoard[start.row][start.column - 2];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row, start.column + 1)) {
-						retracting = theBoard[start.row][start.column + 1];
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(withAttack.isEmpty()) {
-						Move newMove = new Move(start, end, color, false, false);
-						noAttack.add(newMove);
-					}
-					break;
-				case RIGHT:
-					if(Points.isValidSpace(start.row, start.column + 2) && Points.isValidSpace(start.row, start.column - 1)) {
-						advancing = theBoard[start.row][start.column + 2];
-						retracting = theBoard[start.row][start.column - 1];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row, start.column + 2)) {
-						advancing = theBoard[start.row][start.column + 2];
-						if(advancing != move.getColor() && advancing != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, false, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(Points.isValidSpace(start.row, start.column - 1)) {
-						retracting = theBoard[start.row][start.column - 1];
-						if(retracting != move.getColor() && retracting != Pieces.EMPTY) {
-							Move newMove = new Move(start, end, color, true, true);
-							withAttack.add(newMove);
-						}
-					}
-					else if(withAttack.isEmpty()) {
-						Move newMove = new Move(start, end, color, false, false);
-						noAttack.add(newMove);
-					}
-					break;
 				}
 			}
 		}
