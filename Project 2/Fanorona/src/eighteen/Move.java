@@ -8,14 +8,20 @@ public class Move {
 	private Pieces color;
 	private Direction direction;
 	private boolean advancing;
+	private boolean attacking;
 	
 	public Move() {}
 	
-	public Move(Points start, Points end, Pieces color, boolean isAdvancing) throws BadMoveException {
+	public Move(Points start, Points end, Pieces color, boolean isAdvancing, boolean isAttacking) throws BadMoveException {
 		this.start = start;
 		this.end = end;
 		this.color = color;
 		advancing = isAdvancing;
+		attacking = isAttacking;
+		updateDirection();
+	}
+	
+	public void updateDirection() throws BadMoveException {
 		if(start.equals(end)) {
 			throw new BoardManager.BadMoveException("Bad move initialized");
 		}
@@ -53,6 +59,7 @@ public class Move {
 				}
 			}
 		}
+		
 	}
 	
 	public void setStart(Points start) {
@@ -81,6 +88,10 @@ public class Move {
 	
 	public Direction getDirection() {
 		return direction;
+	}
+	
+	public void setAdvancing(boolean adv) {
+		advancing = adv;
 	}
 	
 	public boolean getAdvancing() {
