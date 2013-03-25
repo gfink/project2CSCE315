@@ -72,7 +72,7 @@ public class Board {
 				if(get(curLocation) == color) {
 					move.setStart(curLocation);
 					move.setColor(color);
-					for(Points end: curLocation.adjacentLocations) {
+					for(Points end: curLocation.adjacentLocations()) {
 						move.setEnd(end);
 						move.updateDirection();
 						int rowAdv = 0;

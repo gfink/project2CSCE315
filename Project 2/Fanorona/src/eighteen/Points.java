@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Points {
 	public int row;
 	public int column;
-	ArrayList<Points> adjacentLocations;
 	
 	public Points(int x, int y) {
 		row = x;
@@ -12,13 +11,11 @@ public class Points {
 		if(!isValidSpace()) {
 			throw new IndexOutOfBoundsException();
 		}
-		makeAdjacentLocations();
 	}
 	
 	public Points(Points a) {
 		this.row = a.row;
 		this.column = a.column;
-		makeAdjacentLocations();
 	}
 	
 	public boolean isValidSpace() {
@@ -33,7 +30,8 @@ public class Points {
 		return false;
 	}
 	
-	private void makeAdjacentLocations() {
+	public ArrayList<Points> adjacentLocations() {
+		ArrayList<Points> adjacentLocations = new ArrayList<Points>();
 		if(row + column % 2 == 0) {
 			if(isValidSpace(row - 1, column - 1))
 				adjacentLocations.add(new Points(row - 1, column - 1));
@@ -52,6 +50,7 @@ public class Points {
 			adjacentLocations.add(new Points(row, column - 1));
 		if(isValidSpace(row, column + 1))
 			adjacentLocations.add(new Points(row, column + 1));
+		return adjacentLocations;
 	}
 	
 	public boolean equals(Points a)
